@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeless Fragrances</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        header { text-align: center; margin: 20px; }
+        .product { margin: 20px; }
+        #cart { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h4>B141/24834/2022 STEPHANY SETH MUTHAMI</h4>
+        <h1>TIMELESS FRAGRANCES</h1>
+        
+</header><nav>
+    <a href="#Home">Home</a>
+    <a href="#products">Products</a>
+    <a href="#Register">Register</a>
+    <a href="#CONTACT US">contact us</a>
+</nav>
+<div><h3>home</h3><p>Timeless fragrancies brings you the best perfumes from fruity...floral..to woody.a scent can say athousand words,hold various meanings and caputure key moments<br><strong>order yours today!!</strong> </stong></p></div>
+
+
+
+
+    <h2>Products</h2>
+    <div id="products">
+        <div class="product" data-price="1500">
+            <span>Safari-1500 </span>
+            <img src="img.jpeg" alt="Safari Image" width="200">
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-price="1200">
+            <span>Burberry -1200</span>
+            <img src="burberry.webp" alt="Burberry Image" width="200">
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-price="2700">
+            <span>Creed-2700 
+            </span>
+            <img src="creed.webp" alt="Creed Image" width="200">
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+    <div class="product" data-price="2700">
+            <span>intense -2700
+                 </span>
+            <img src="intense-ysl.jpg" alt="intense-ysl Image" width="200">
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-price="5500">
+        <span>sprinkle-5500
+        </span>
+        <img src="sprinkle.webp" alt="sprinkle Image" width="200">
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+<div class="product" data-price="3200">
+        <span>vanilla wood-3200
+        </span>
+        <img src="vanilla wood.jpg" alt="vanilla woodImage" width="200">
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <section id="cart" class="container">
+        <h2>Shopping Cart</h2>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price (KSH)</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Items will be dynamically added here -->
+            </tbody>
+        </table>
+        <p id="total">Total: KSH 0</p>
+    </section>
+
+
+      <section id="Register">
+        <h2>Register</h2>
+        <form id="registration-form">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" required><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" required><br>
+            <label for="phone">Phone number:</label><br>
+            <input type="tel" id="phone" name="phone" placeholder="07-***-***" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="pwd">Password:</label><br>
+            <input type="password" id="pwd" name="pwd" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </section><script>let cartTotal = 0;
+        const cartTableBody = document.querySelector('#cart-table tbody');
+        const totalDisplay = document.getElementById('total');
+
+        // Add products to the cart
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const product = this.parentElement;
+                const productName = product.querySelector('span').innerText;
+                const productPrice = parseInt(product.getAttribute('data-price'));
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${productName}</td>
+                    <td>${productPrice}</td>
+                    <td><button class="remove-item">Remove</button></td>
+                `;
+                cartTableBody.appendChild(row);
+
+                cartTotal += productPrice;
+                updateTotalDisplay();
+
+                // Remove item functionality
+                row.querySelector('.remove-item').addEventListener('click', function () {
+                    cartTableBody.removeChild(row);
+                    cartTotal -= productPrice;
+                    updateTotalDisplay();
+                });
+
+                alert('Item added to cart!');
+            });
+        });
+
+        // Update cart total display
+        function updateTotalDisplay() {
+            totalDisplay.innerText = `Total: KSH ${cartTotal}`;
+        }
+    // Handle registration and payment prompt
+        const registrationForm = document.getElementById('registration-form');
+        registrationForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(registrationForm);
+            const userInfo = {
+                firstName: formData.get('fname'),
+                lastName: formData.get('lname'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                password: formData.get('pwd')
+            };
+
+            // Simulate payment prompt through M-Pesa
+            if (cartTotal > 0) {
+                alert(`Thank you for registering, ${userInfo.firstName}! Please proceed to pay KES ${cartTotal} via M-Pesa.`);
+                // Here you would redirect or integrate with the M-Pesa API for real payment
+            } else {
+                alert('Your cart is empty. Please add products to your cart before proceeding to payment.');
+            }
+        });
+    </script>
+    
+    
+
+<div
+<section id="CONTACT US"></section>
+<h2>CONTACT US </h2>
+<div class="contact-info">
+<div>
+    <i class="fas fa-phone"></i>
+    <strong>Phone:</strong> <a href="tel:+254717999886">+254 717 770 396</a>
+</div>
+
+<div>
+    <i class="fas fa-envelope"></i>
+    <strong>Email:</strong> <a href="mailto:info@shoehub.com">info@timelessfragrancies.com</a>
+</div>
+
+<div>
+    <i class="fas fa-map-marker-alt"></i>
+    <strong>Address:</strong> 123 Chiromo Street, Nairobi City, SC 12345
+</div>
+
+<div>
+    <i class="fas fa-clock"></i>
+    <strong>Delivery Hours:</strong> Mon-Sat, 9 AM - 5 PM
+</div>
+</div>
+<script src="script.js"></script>
+<style>
+
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: palevioletred;
+    color: white;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Home Section */
+div > h3 {
+    text-align: center;
+    color: palevioletred;
+}
+
+/* Product Styles */
+#products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product button {
+    background-color: palevioletred;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.product button:hover {
+    background-color: #b02a2a;
+}
+
+/* Cart Styles */
+#cart {
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#cart-table th, #cart-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#cart-table th {
+    background-color: #f2f2f2;
+}
+
+/* Registration Form Styles */
+#registration-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+#registration-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#registration-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Contact Us Styles */
+.contact-info {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.contact-info div {
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #products {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style></body></html>
